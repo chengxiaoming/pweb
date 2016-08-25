@@ -24,4 +24,4 @@ def power(x,n):
 	y = x*n
 	return y
 
-print(power(2,3))
+print(power(2,3),names[0:1])
