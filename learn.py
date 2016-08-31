@@ -1,9 +1,31 @@
 print('aaa')
 a = input()
 print(a)
-
+import functools
+int2 = functools.partial(int,base = 2)
+print(int2('1000'))
 from collections import Iterable
 from collections import Iterator
+def log(func):
+	print('aad')
+	def wrapper(*args,**kw):
+		return func(*args,**kw)
+	return wrapper
+iii = log('aa')
+@log
+def now():
+	print('2015-01-01')
+
+print(now())
+
+def application(environ, start_response):
+    start_response('200 OK', [('Content-Type', 'text/html')])
+    return [b'<h1>Hello, web!</h1>']
+from wsgiref.simple_server import make_server
+httpd = make_server('',8000,application)
+print('serving http on port 8000')
+httpd.serve_forever()
+
 def fil(x):
 	return x%2 == 1
 print(list(filter(fil,[1,2,3,4,5,6,7,8,9,0])))
